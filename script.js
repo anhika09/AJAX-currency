@@ -7,8 +7,7 @@ const BASE_URL = "https://bank.gov.ua/NBU_Exchange/exchange_site?";
 
 GetRate.addEventListener("click", () => {
   if (!currency.value || !fromDate.value || !toDate.value) {
-    sectionData.innerHTML =
-      "<p style='color:red;'>Please select a currency and both dates.</p>";
+    alert("Please select a currency and both dates.");
     return;
   }
 
@@ -24,13 +23,12 @@ GetRate.addEventListener("click", () => {
       if (XHR.status === 200) {
         const data = JSON.parse(XHR.responseText);
         if (data.length === 0) {
-          sectionData.innerHTML = "<h2>No data found for these dates.</h2>";
+          alert("No data found for these dates.");
           return;
         }
-        sectionData.innerHTML = "";
 
         const chartDataPoints = data.map((item) => {
-          const parts = item.exchangedate.split("."); // NBU gives DD.MM.YYYY
+          const parts = item.exchangedate.split(".");
           return {
             x: new Date(parts[2], parts[1] - 1, parts[0]),
             y: item.rate,
@@ -53,7 +51,7 @@ GetRate.addEventListener("click", () => {
 
         chart.render();
       } else {
-        sectionData.innerHTML = "<h2>Error connecting to the API.</h2>";
+        alert("Error connecting to the API.");
       }
     }
   });

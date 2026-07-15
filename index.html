@@ -10,26 +10,30 @@
 
 <body>
     <main>
-        <section>
-            <h2>Currency Exchange</h2>
-            <label for="currency">Currency</label>
-            <select name="currency" id="currency">
-                <option value="" disabled selected>Select a currency</option>
-                <option value="USD">US Dollar</option>
-                <option value="EUR">Euro</option>
-                <option value="PLN">Zloty</option>
-            </select>
-        </section>
-        <p>Select a time frame to view the exhange rate</p>
-        <label for="from-date">From:</label>
-        <input type="date" name="fdate" id="from-date">
-        
-        <label for="to-date">To:</label>
-        <input type="date" name="tdate" id="to-date">
-        
-        <input type="button" id="btnRate" value="Get Rate">
+        <div class="form-info">
+            <section>
+                <h2>Currency Exchange</h2>
+                <label for="currency">Currency</label>
+                <select name="currency" id="currency">
+                    <option value="" disabled selected>Select a currency</option>
+                    <option value="USD">US Dollar</option>
+                    <option value="EUR">Euro</option>
+                    <option value="PLN">Zloty</option>
+                </select>
+            </section>
+            <p>Select a time frame to view the exhange rate</p>
+
+            <label for="from-date">From:</label>
+            <input type="date" name="fdate" id="from-date" class="data">
+
+            <label for="to-date">To:</label>
+            <input type="date" name="tdate" id="to-date" class="data">
+
+            <input type="button" id="btnRate" value="Get Rate">
+
+            <section id="data"></section>
+        </div>
         <div id="chartContainer" style="height: 300px; width: 100%; margin-top: 20px;"></div>
-        <section id="data"></section>
     </main>
     <script src="script.js"></script>
     <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
